@@ -7,7 +7,7 @@ import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "eventos_procesados")
+@Table(name = "notificaciones_eventos_procesados")
 @Getter
 @Setter
 @NoArgsConstructor

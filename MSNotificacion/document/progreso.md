@@ -14,7 +14,7 @@
 | 3 | MS Participación Ciudadana | ⬜ | 0% | — |
 | 4 | **MS Logística** | 🔄 | ~85% | Backend + 38 tests OK; pendiente compose, `mission.assigned`, E2E gateway — [ms-logistics-inicio.md](./servicios/ms-logistics-inicio.md) |
 | 5 | MS Coordinación de Emergencias | 🔄 | ~80% | GeoJSON, eventos RabbitMQ, centros asociados, Docker OK |
-| 6 | MS Notificaciones + Lambda | 🔄 | ~85% | Backend `:8086`, WebSocket, RabbitMQ, Lambda stub local — [avances-ms-notifications.md](./por-servicio/avances-ms-notifications.md) |
+| 6 | MS Notificaciones + Lambda | 🔄 | ~90% | Compose + E2E gateway OK; pendiente frontend STOMP |
 | 7 | Integración RabbitMQ completa | 🔄 | 30% | EMG publica/consume; doc en `infra/RabbitMQConfig.md` |
 | 8 | Frontend completo | 🔄 | 65% | Auth, emergencias, logística UI, sidebar unificado |
 | 9 | QA, hardening y producción | ⬜ | 0% | — |
@@ -34,7 +34,7 @@
 | Transferencias / misiones (logística) | 🔄 | ✅ | 🔄 | APIs mutación OK; front con mocks; compose pendiente |
 | Gestión ciudadana (FE) | 🔄 | ⬜ | ⬜ | Menú Necesidades/Donaciones; páginas pendientes |
 | Inventario / donaciones | 🔄 | ⬜ | ⬜ | Inventario placeholder FE; ms-citizen Fase 3 |
-| Notificaciones | ⬜ | 🔄 | ⬜ | Fase 6 backend listo; E2E gateway/FE pendiente |
+| Notificaciones | ⬜ | 🔄 | 🔄 | Compose + gateway `:8080/notificaciones/**` OK; FE pendiente |
 
 ## Microservicios — detalle
 

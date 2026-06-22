@@ -29,14 +29,26 @@
 
 #### Pendiente
 
-- Añadir `ms-notifications` a `compose.yaml` raíz.
-- E2E vía gateway `:8080/notificaciones/**`.
 - Integración frontend (hook `useNotifications` + STOMP).
 - Despliegue Lambda + SES en AWS (cuando se requiera entorno cloud).
 - Publicar/consumir `mission.assigned` end-to-end con ms-logistics.
 
+---
+
+### [2026-06-22] Compose + E2E gateway (`:8080/notificaciones/**`)
+
+**Fase:** 6 — MS Notificaciones + Lambda Email  
+**Integrante(s):** Cursor Agent
+
+#### Completado
+
+- `Dockerfile` + `.dockerignore` en `MSNotificacion/MS-Notificacion/MSNotificacion/`.
+- Servicio `ms-notifications` en `compose.yaml` raíz (puerto 8086, RabbitMQ, Redis, Flyway, auth dev).
+- Gateway: `MS_NOTIFICATIONS_URI=http://ms-notifications:8086` + `depends_on` healthy.
+- E2E: `GET http://localhost:8080/notificaciones` vía gateway (modo dev con `X-Firebase-Uid`).
+- Fix Flyway V3: tabla renombrada a `notificaciones_eventos_procesados` (evita colisión con `ms-resources.eventos_procesados`).
+
 #### Próximos pasos
 
-1. `mvn spring-boot:run` con BD `catastrofecl`, Redis y RabbitMQ locales.
-2. Probar `GET /notificaciones` con header `X-Dev-Usuario-Id`.
-3. Publicar evento de prueba a `catastrofescl.events` y verificar consumo.
+1. Integración frontend (`useNotifications` + STOMP).
+2. Publicar evento de prueba y verificar notificación in-app + WebSocket.
