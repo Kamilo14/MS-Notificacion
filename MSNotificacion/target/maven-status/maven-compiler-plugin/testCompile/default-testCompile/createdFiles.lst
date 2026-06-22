@@ -1,0 +1,3 @@
+cl\catastrofescl\notifications\service\NotificacionServiceTest.class
+cl\catastrofescl\notifications\messaging\ProcesadorEventosNotificacionTest.class
+cl\catastrofescl\notifications\MsNotificationsApplicationTests.class
