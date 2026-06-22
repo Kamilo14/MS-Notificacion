@@ -90,4 +90,31 @@ class ProcesadorEventosNotificacionTest {
         verify(notificacionService, never()).crearInApp(any(), any(), any(), any(), any());
         verify(publicadorEmailQueue).publicar(any());
     }
+
+    @Test
+    void procesarTransferStatusChanged_creaNotificacionInApp() throws Exception {
+        UUID usuarioId = UUID.randomUUID();
+        UUID eventoId = UUID.randomUUID();
+        String json = """
+                {
+                  "eventoId": "%s",
+                  "solicitadoPorUsuarioId": "%s",
+                  "estadoAnterior": "SOLICITADA",
+                  "estadoNuevo": "APROBADA",
+                  "ocurridoEn": "2026-06-21T10:00:00Z"
+                }
+                """.formatted(eventoId, usuarioId);
+
+        when(preferenciaService.permiteInApp(usuarioId, TipoNotificacion.TRANSFERENCIA_ESTADO)).thenReturn(true);
+        when(preferenciaService.permiteCorreo(usuarioId, TipoNotificacion.TRANSFERENCIA_ESTADO)).thenReturn(false);
+
+        procesador.procesar("transfer.status.changed", json.getBytes(StandardCharsets.UTF_8));
+
+        verify(notificacionService).crearInApp(
+                eq(usuarioId),
+                eq(TipoNotificacion.TRANSFERENCIA_ESTADO),
+                any(),
+                any(),
+                any());
+    }
 }

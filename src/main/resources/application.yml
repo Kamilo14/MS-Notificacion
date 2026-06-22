@@ -52,6 +52,9 @@ catastrofescl:
     exchange-dlx: catastrofescl.dlx
     cola-notificaciones: notifications.queue
     cola-email: email.queue
+    cola-transfer-created: transfer.created.queue
+    cola-transfer-status-changed: transfer.status.changed.queue
+    cola-mission-assigned: mission.assigned.queue
     consumidor-nombre: ms-notifications
   auth:
     dev-mode: false

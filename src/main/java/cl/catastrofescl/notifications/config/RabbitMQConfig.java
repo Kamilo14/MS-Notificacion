@@ -64,11 +64,6 @@ public class RabbitMQConfig {
     }
 
     @Bean
-    public Binding notificationsWildcardBinding(Queue notificationsQueue, TopicExchange catastrofesclEventsExchange) {
-        return BindingBuilder.bind(notificationsQueue).to(catastrofesclEventsExchange).with("#");
-    }
-
-    @Bean
     public Queue emailQueue() {
         return QueueBuilder.durable(colaEmail)
                 .withArgument("x-dead-letter-exchange", exchangeDlx)
