@@ -1,0 +1,24 @@
+spring:
+  rabbitmq:
+    host: ${RABBITMQ_HOST:localhost}
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USER:guest}
+    password: ${RABBITMQ_PASS:guest}
+    listener:
+      simple:
+        acknowledge-mode: manual
+        default-requeue-rejected: false
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+
+catastrofescl:
+  auth:
+    dev-mode: ${MS_NOTIFICATIONS_AUTH_DEV_MODE:true}
+    dev-trust-gateway-firebase-headers: ${MS_NOTIFICATIONS_AUTH_TRUST_GATEWAY:true}
+    dev-default-role-for-gateway: ${MS_NOTIFICATIONS_AUTH_DEFAULT_ROLE:AUTORIDAD,PARTICULAR}
+
+logging:
+  level:
+    cl.catastrofescl.notifications: DEBUG
